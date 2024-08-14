@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatLab</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            position: relative; /* Added for positioning of hover message */
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            position: relative; /* Added for positioning of hover message */
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        nav ul li a:hover::after {
+            content: "Click me!";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #555;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        
+        #ho:hover::after {
+            content: "Welcome Home!";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #555;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        
+        #ab:hover::after {
+            content: "Know about us!";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #555;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        
+        #se:hover::after {
+            content: "Explore our Services here!";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #555;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        #co:hover::after {
+            content: "Please contact us for any issue!";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #555;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        main {
+            padding: 20px;
+        }
+        
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Ensure the padding and border are included in the width */
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" id="ho">Home</a></li>
+                <li><a href="#" id="ab">About</a></li>
+                <li><a href="#" id="se">Services</a></li>
+                <li><a href="#" id="co">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h1>Welcome to ChatLab</h1>
+        <p>This is the main content of my website.</p>
+        <form action="submit.php" method="post">
+             <label>New here! Register Now.</label>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            
+            <input type="submit" value="Register">
+        </form>
+        
+    <br><br>
+        <form action="submit_login.php" method="post">
+             <label>Already Registered! Login here</label>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="login_username" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="login_password" required><br><br>
+            
+            <input type="submit" value="Login">
+        </form>
+        <br><br>
+         <form action="submit_admin.php" method="post">
+             <label>Login for Admin Only</label>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="admin_username" required><br><br>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="admin_password" required><br><br>
+            
+            <input type="submit" value="Login">
+        </form>
+        
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 ChatLab. All Rights Reserved.<span id="visitor-count"></span></p>
+    </footer>
+    
+    <script>
+        // Fetch visitor count from counter.php using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "counter.php", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                document.getElementById("visitor-count").innerText = "Total Visitors: " + xhr.responseText;
+            }
+        };
+        xhr.send();
+        
+          // Function to generate a unique number and set it as the user_id value
+        function setUniqueNumber() {
+            var user_id_input = document.createElement("input");
+            user_id_input.setAttribute("type", "hidden");
+            user_id_input.setAttribute("name", "user_id");
+            user_id_input.setAttribute("value", generateUniqueNumber());
+            document.getElementById("registrationForm").appendChild(user_id_input);
+        }
+
+        // Call the setUniqueNumber function to generate and set the user_id value
+        setUniqueNumber();
+    </script>
+    
+</body>
+</html>

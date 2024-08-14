@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Lab</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="usernameInputSender" class="chat-input" placeholder="Please enter the username">
+         <input type="text" id="usernameInputReceiver" class="chat-input" placeholder="Please enter the username to chat with!">
+        <div class="chat-box" id="chatBox"></div>
+        <textarea id="messageInput" class="chat-input" placeholder="Type your message..."></textarea>
+        <button onclick="sendMessage()" class="send-btn" id="sendButton">Send</button>
+    </div>
+    
+    <br><br>
+     <div class="container">
+        <form action="save_message.php" method="post">
+            <input type="text" id="usernameInputSender1" class="chat-input" placeholder="Please enter the username">
+         <input type="text" id="usernameInputReceiver1" class="chat-input" placeholder="Please enter the username to chat with!">
+          <div class="chat-box" id="chatBox"></div>
+        <textarea id="messageInput" class="chat-input" placeholder="Type your message..."></textarea>
+            
+            <input type="submit" value="Send">
+        </form>
+        </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
